@@ -1,7 +1,9 @@
+from unittest import TestCase
+
 from day01 import get_calibration_value, rename_numbers, compute_value_from_file
 
 
-class TestDay01:
+class TestDay01(TestCase):
 
     def test_get_calibration_value_sdsds(self):
         assert get_calibration_value('x1x3x') == 13
@@ -28,7 +30,7 @@ class TestDay01:
         assert rename_numbers('one1one') == '111'
 
     def test_rename_numbers_eightwothree(self):
-        assert rename_numbers('eightwothree') == '83'
+        assert rename_numbers('eightwothree') == '8wo3'
 
     def test_rename_numbers_two1nine(self):
         assert rename_numbers('two1nine') == '219'

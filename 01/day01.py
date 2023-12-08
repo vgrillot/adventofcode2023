@@ -36,9 +36,20 @@ text_numbers = {
 
 
 def rename_numbers(line: str) -> str:
-    for digit, txt in text_numbers.items():
+    while True:
+        leftmost = {}
+        for digit, txt in text_numbers.items():
+            try:
+                leftmost[digit] = line.index(txt)
+            except ValueError:
+                pass
+        if not leftmost:
+            return line
+        leftmost = {k: v for k, v in sorted(leftmost.items(), key=lambda item: item[1])}
+        digit = next(iter(leftmost))
+        txt = text_numbers[digit]
         line = line.replace(txt, digit)
-    return line
+
 
 
 def parse_lines(lines):
